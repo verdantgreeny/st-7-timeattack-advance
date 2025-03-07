@@ -10,7 +10,6 @@ export default function TodoList() {
     data: todos,
     error,
     isPending,
-    refetch,
   } = useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
