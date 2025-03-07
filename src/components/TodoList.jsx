@@ -61,15 +61,12 @@ export default function TodoList() {
 
     onError: (err, newTodo, context) => {
       console.error(err);
-      queryClient.setQueryData(
-        ["todos", context.newTodo.id],
-        context.previousTodo
-      );
+      queryClient.setQueryData(["todos"], context.previousTodo);
     },
 
     // Always refetch after error or success:
     onSettled: (newTodo) => {
-      queryClient.invalidateQueries({ queryKey: ["todos", newTodo.id] });
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
   });
 
